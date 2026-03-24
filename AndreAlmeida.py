@@ -10,16 +10,19 @@ def ler_dados(nome_ficheiro):
             
             # Percorre o ficheiro linha a linha
             for linha in ficheiro:
+                try:
                 # Limpa espaços extra e corta a frase onde houver uma vírgula
-                partes = linha.strip().split(',')
-                
-                # Garante que a linha tem exatamente 2 pedaços (Nome do Projeto e Horas)
-                if len(partes) == 2:
-                    nome_projeto = partes[0].strip() # 1ª parte é o nome
-                    horas = float(partes[1].strip()) # 2ª parte são as horas (convertidas para número decimal)
+                    partes = linha.strip().split(',')
                     
-                    # Adiciona o nome e as horas à nossa lista de dados
-                    dados.append((nome_projeto, horas))
+                    # Garante que a linha tem exatamente 2 pedaços (Nome do Projeto e Horas)
+                    if len(partes) == 2:
+                        nome_projeto = partes[0].strip() # 1ª parte é o nome
+                        horas = float(partes[1].strip()) # 2ª parte são as horas (convertidas para número decimal)
+                        
+                        # Adiciona o nome e as horas à nossa lista de dados
+                        dados.append((nome_projeto, horas))
+                except ValueError:
+                    print(f"Erro: A linha '{linha.strip()}' contém dados inválidos e será ignorada.")
                     
     # Se o ficheiro não existir, apanha o erro e avisa o utilizador
     except FileNotFoundError:

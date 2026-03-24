@@ -1,0 +1,5 @@
+Projeto Alpha, 5.5
+Projeto Beta, 3
+Projeto Alpha, 2
+Projeto Gama, 8
+Projeto Beta, 1.5
